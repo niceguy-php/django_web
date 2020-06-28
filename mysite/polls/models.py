@@ -6,6 +6,7 @@ import os
 from django.conf import settings
 from django.utils.safestring import mark_safe
 import uuid
+from DjangoUeditor.models import UEditorField
 # from django_thumbs.db.models import ImageWithThumbsField
 # Create your models here.
 
@@ -30,6 +31,11 @@ class Question(models.Model):
     headImg = models.ImageField(upload_to=generate_filename, default="")
     is_disabled = models.BooleanField(u"是否启用",default=False)
     # coverImg = ImageWithThumbsField("封面",upload_to=generate_filename, sizes=((125, 125),))
+    content = UEditorField(u'内容	', width=1000, height=600, toolbars="full",
+                           imagePath="editor/images/%(basename)s_%(datetime)s.%(extname)s",
+                           filePath="editor/files/%(basename)s_%(datetime)s.%(extname)s",
+                           upload_settings={"imageMaxSize": 1204000},
+                           settings={}, command=None, blank=True)
 
     def __unicode__(self):
         return self.coverImg.url_150x150

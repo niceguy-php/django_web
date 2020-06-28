@@ -24,6 +24,7 @@ class QuestionAdmin(ImportExportModelAdmin):
         (None,               {'fields': ['language']}),
         (None,               {'fields': ['headImg']}),
         (None,               {'fields': ['is_disabled']}),
+        (None,               {'fields': ['content']}),
         ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
     ]
     # inlines = [ChoiceInline]
